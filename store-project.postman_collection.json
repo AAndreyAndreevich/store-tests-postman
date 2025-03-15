@@ -1,0 +1,716 @@
+{
+	"info": {
+		"_postman_id": "5318712e-3187-4f19-9cd1-12f8fad6cea9",
+		"name": "store-project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31962635"
+	},
+	"item": [
+		{
+			"name": "success-tests",
+			"item": [
+				{
+					"name": "account",
+					"item": [
+						{
+							"name": "registration",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/registration",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"registration"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/login?username=test&password=testest",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"login"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "test"
+										},
+										{
+											"key": "password",
+											"value": "testest"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "успешные тесты для управления аккаунтами"
+				},
+				{
+					"name": "store",
+					"item": [
+						{
+							"name": "createStoreForm",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/store/createStoreForm",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"store",
+										"createStoreForm"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "changeStoreNameForm",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/store/changeStoreNameForm",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"store",
+										"changeStoreNameForm"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "changeStoreName / NEW",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Проверка статуса ответа\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Проверка, что ответ содержит JSON\r",
+											"pm.test(\"Response is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"    pm.response.to.have.jsonBody();\r",
+											"});\r",
+											"\r",
+											"// Проверка наличия всех ожидаемых параметров\r",
+											"pm.test(\"Response should contain operation result\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"\r",
+											"    // Проверка наличия всех полей\r",
+											"    pm.expect(jsonData).to.have.property('username');\r",
+											"    pm.expect(jsonData).to.have.property('storeName');\r",
+											"    pm.expect(jsonData).to.have.property('operationType');\r",
+											"\r",
+											"    // Проверка типов данных\r",
+											"    pm.expect(jsonData.username).to.be.a('string');\r",
+											"    pm.expect(jsonData.storeName).to.be.a('string');\r",
+											"    pm.expect(jsonData.operationType).to.be.a('string');\r",
+											"\r",
+											"    // Дополнительные проверки (опционально)\r",
+											"    pm.expect(jsonData.operationType).to.equal('Смена названия'); // Проверка значения\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/store/changeStoreName?oldName=Магнат&newName=Магнитик",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"store",
+										"changeStoreName"
+									],
+									"query": [
+										{
+											"key": "oldName",
+											"value": "Магнат"
+										},
+										{
+											"key": "newName",
+											"value": "Магнитик"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "changeStoreName / RETURN OLD NAME",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Проверка статуса ответа\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Проверка, что ответ содержит JSON\r",
+											"pm.test(\"Response is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"    pm.response.to.have.jsonBody();\r",
+											"});\r",
+											"\r",
+											"// Проверка наличия всех ожидаемых параметров\r",
+											"pm.test(\"Response should contain operation result\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"\r",
+											"    // Проверка наличия всех полей\r",
+											"    pm.expect(jsonData).to.have.property('username');\r",
+											"    pm.expect(jsonData).to.have.property('storeName');\r",
+											"    pm.expect(jsonData).to.have.property('operationType');\r",
+											"\r",
+											"    // Проверка типов данных\r",
+											"    pm.expect(jsonData.username).to.be.a('string');\r",
+											"    pm.expect(jsonData.storeName).to.be.a('string');\r",
+											"    pm.expect(jsonData.operationType).to.be.a('string');\r",
+											"\r",
+											"    // Дополнительные проверки (опционально)\r",
+											"    pm.expect(jsonData.operationType).to.equal('Смена названия'); // Проверка значения\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/store/changeStoreName?oldName=Магнитик&newName=Магнат",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"store",
+										"changeStoreName"
+									],
+									"query": [
+										{
+											"key": "oldName",
+											"value": "Магнитик"
+										},
+										{
+											"key": "newName",
+											"value": "Магнат"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Успешные тесты для запросов /store/**"
+				},
+				{
+					"name": "inv",
+					"item": [
+						{
+							"name": "getAllProductsForm",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/inv/getAllProductsForm",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"inv",
+										"getAllProductsForm"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllProducts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response should be a JSON array\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"    pm.response.to.have.jsonBody();\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response should contain products\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData).to.be.an('array');\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/inv/getAllProducts?storeId=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"inv",
+										"getAllProducts"
+									],
+									"query": [
+										{
+											"key": "storeId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "manageProductForm",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/inv/manageProductForm",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"inv",
+										"manageProductForm"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "manageProduct / BUY_PRODUCT",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Проверка статуса ответа\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Проверка, что ответ содержит JSON\r",
+											"pm.test(\"Response is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"    pm.response.to.have.jsonBody();\r",
+											"});\r",
+											"\r",
+											"// Проверка наличия всех ожидаемых параметров\r",
+											"pm.test(\"Response should contain operation result\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"\r",
+											"    // Проверка наличия всех полей\r",
+											"    pm.expect(jsonData).to.have.property('operationType');\r",
+											"    pm.expect(jsonData).to.have.property('balance');\r",
+											"    pm.expect(jsonData).to.have.property('productName');\r",
+											"    pm.expect(jsonData).to.have.property('count');\r",
+											"    pm.expect(jsonData).to.have.property('username');\r",
+											"    pm.expect(jsonData).to.have.property('storeName');\r",
+											"    pm.expect(jsonData).to.have.property('success');\r",
+											"\r",
+											"    // Проверка типов данных\r",
+											"    pm.expect(jsonData.operationType).to.be.a('string');\r",
+											"    pm.expect(jsonData.balance).to.be.a('number');\r",
+											"    pm.expect(jsonData.productName).to.be.a('string');\r",
+											"    pm.expect(jsonData.count).to.be.a('number');\r",
+											"    pm.expect(jsonData.username).to.be.a('string');\r",
+											"    pm.expect(jsonData.storeName).to.be.a('string');\r",
+											"    pm.expect(jsonData.success).to.be.a('boolean');\r",
+											"\r",
+											"    // Дополнительные проверки (опционально)\r",
+											"    pm.expect(jsonData.operationType).to.equal('Покупка продукта'); // Проверка значения\r",
+											"    pm.expect(jsonData.success).to.be.true; // Проверка, что операция успешна\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/inv/manageProduct?storeId=1&productId=1&count=1&operationType=BUY_PRODUCT",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"inv",
+										"manageProduct"
+									],
+									"query": [
+										{
+											"key": "storeId",
+											"value": "1"
+										},
+										{
+											"key": "productId",
+											"value": "1"
+										},
+										{
+											"key": "count",
+											"value": "1"
+										},
+										{
+											"key": "operationType",
+											"value": "BUY_PRODUCT"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "manageProduct / SELL_PRODUCT",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Проверка статуса ответа\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Проверка, что ответ содержит JSON\r",
+											"pm.test(\"Response is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"    pm.response.to.have.jsonBody();\r",
+											"});\r",
+											"\r",
+											"// Проверка наличия всех ожидаемых параметров\r",
+											"pm.test(\"Response should contain operation result\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"\r",
+											"    // Проверка наличия всех полей\r",
+											"    pm.expect(jsonData).to.have.property('operationType');\r",
+											"    pm.expect(jsonData).to.have.property('balance');\r",
+											"    pm.expect(jsonData).to.have.property('productName');\r",
+											"    pm.expect(jsonData).to.have.property('count');\r",
+											"    pm.expect(jsonData).to.have.property('username');\r",
+											"    pm.expect(jsonData).to.have.property('storeName');\r",
+											"    pm.expect(jsonData).to.have.property('success');\r",
+											"\r",
+											"    // Проверка типов данных\r",
+											"    pm.expect(jsonData.operationType).to.be.a('string');\r",
+											"    pm.expect(jsonData.balance).to.be.a('number');\r",
+											"    pm.expect(jsonData.productName).to.be.a('string');\r",
+											"    pm.expect(jsonData.count).to.be.a('number');\r",
+											"    pm.expect(jsonData.username).to.be.a('string');\r",
+											"    pm.expect(jsonData.storeName).to.be.a('string');\r",
+											"    pm.expect(jsonData.success).to.be.a('boolean');\r",
+											"\r",
+											"    // Дополнительные проверки (опционально)\r",
+											"    pm.expect(jsonData.operationType).to.equal('Продажа продукта'); // Проверка значения\r",
+											"    pm.expect(jsonData.success).to.be.true; // Проверка, что операция успешна\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/inv/manageProduct?storeId=1&productId=1&count=1&operationType=SELL_PRODUCT",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"inv",
+										"manageProduct"
+									],
+									"query": [
+										{
+											"key": "storeId",
+											"value": "1"
+										},
+										{
+											"key": "productId",
+											"value": "1"
+										},
+										{
+											"key": "count",
+											"value": "1"
+										},
+										{
+											"key": "operationType",
+											"value": "SELL_PRODUCT"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Успешные тесты для запросов /inv/**"
+				}
+			]
+		},
+		{
+			"name": "fail-tests",
+			"item": [
+				{
+					"name": "inv",
+					"item": []
+				},
+				{
+					"name": "store",
+					"item": []
+				},
+				{
+					"name": "account",
+					"item": []
+				}
+			]
+		},
+		{
+			"name": "login / test",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/login?username=test&password=testtest",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "test"
+						},
+						{
+							"key": "password",
+							"value": "testtest"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "in",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
